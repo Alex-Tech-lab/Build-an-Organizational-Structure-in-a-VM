@@ -1,7 +1,7 @@
 Lab 02: OU Structure · Users · Groups · RBAC
 
 Overview
-Steps 4 and 5 are where Active Directory starts to look and behave like a real enterprise environment. You will build the organisational structure that determines how policies are applied (OUs), then populate it with the identity objects that control who gets access to what (users and security groups).
+These steps are where Active Directory starts to look and behave like a real enterprise environment. You will build the organisational structure that determines how policies are applied (OUs), then populate it with the identity objects that control who gets access to what (users and security groups).
 The design principle here is the same one used in every well-run enterprise environment: access is always assigned to groups, never to individual users. A user gets access to something by being a member of the right group. When they leave, you remove them from groups — every door closes at once.
 
 ## Architecture
@@ -32,7 +32,7 @@ User → Added to group → Group granted access to resource
 Why this matters for security: When a user leaves the organisation, disabling their AD account removes their ability to authenticate anywhere on the domain. When you remove them from their security groups, every resource that group had access to is also revoked — in a single operation. This is why group-based access management is not just a best practice, it's the only approach that scales.
 
 
-Step 4 — Create the OU Structure
+Create the OU Structure
 OUs are the organisational containers of Active Directory. They serve two purposes: they keep objects organised, and they are the scope of Group Policy application. A GPO linked to the Finance OU applies to every user and computer object inside that OU, and nothing outside it.
 
 Design principle: Model your OUs after how you manage people, not just how the org chart looks. If IT admins need to apply different policies to the Finance department than to HR, those departments need to be in separate OUs so you can link different GPOs to each.
@@ -57,7 +57,7 @@ Verify OUs were created
 powershellGet-ADOrganizationalUnit -Filter * | Select Name, DistinguishedName
 You should see all five OUs listed with their full distinguished names, for example: OU=IT,DC=lab,DC=local.
 
-Step 5 — Create Users, Groups, and RBAC Memberships
+Create Users, Groups, and RBAC Memberships
 5a — Create Security Groups
 Security groups are the mechanism that makes RBAC work. You create one group per role or department, grant permissions to the group, then add the right users to that group.
 powershellNew-ADGroup `
@@ -81,7 +81,7 @@ New-ADGroup `
 GroupScope explained: Global scope means the group can contain users from the same domain and be used to grant permissions to resources in any domain in the forest. This is the standard scope for user-population groups in enterprise environments.
 
 
-5b — Create User Accounts
+Create User Accounts
 Create one user per OU to simulate a populated environment.
 powershell# IT OU user
 New-ADUser `
@@ -116,7 +116,7 @@ New-ADUser `
   -AccountPassword (ConvertTo-SecureString "P@ssw0rd123!" -AsPlainText -Force) `
   -Enabled $true
 
-5c — Add Users to Their Security Groups
+Add Users to Their Security Groups
 powershellAdd-ADGroupMember -Identity "IT-Admins"     -Members "ajohnson"
 Add-ADGroupMember -Identity "HR-Staff"      -Members "jsmith"
 Add-ADGroupMember -Identity "Finance-Staff" -Members "mwilliams"
