@@ -1,5 +1,9 @@
 # Lab 02: OU Structure · Users · Groups · RBAC
 
+![Platform](https://img.shields.io/badge/Platform-Windows%20Server%202025-blue?style=flat-square)
+![Duration](https://img.shields.io/badge/Duration-45--90%20min-orange?style=flat-square)
+![Cost](https://img.shields.io/badge/Estimated%20Cost-%240-brightgreen?style=flat-square)
+
 ---
  
 ## Overview
