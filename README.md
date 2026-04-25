@@ -1,4 +1,4 @@
-Lab 02: OU Structure · Users · Groups · RBAC
+# Lab 02: OU Structure · Users · Groups · RBAC
 
 ---
  
