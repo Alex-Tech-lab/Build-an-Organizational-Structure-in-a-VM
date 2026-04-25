@@ -1,6 +1,9 @@
 Lab 02: OU Structure · Users · Groups · RBAC
 
-Overview,
+---
+ 
+## Overview
+
 These steps are where Active Directory starts to look and behave like a real enterprise environment. You will build the organisational structure that determines how policies are applied (OUs), then populate it with the identity objects that control who gets access to what (users and security groups).
 The design principle here is the same one used in every well-run enterprise environment: access is always assigned to groups, never to individual users. A user gets access to something by being a member of the right group. When they leave, you remove them from groups — every door closes at once.
 
