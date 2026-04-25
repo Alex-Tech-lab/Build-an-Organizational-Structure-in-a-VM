@@ -58,7 +58,7 @@ powershellGet-ADOrganizationalUnit -Filter * | Select Name, DistinguishedName
 You should see all five OUs listed with their full distinguished names, for example: OU=IT,DC=lab,DC=local.
 
 Create Users, Groups, and RBAC Memberships
-5a — Create Security Groups
+Create Security Groups
 Security groups are the mechanism that makes RBAC work. You create one group per role or department, grant permissions to the group, then add the right users to that group.
 powershellNew-ADGroup `
   -Name "IT-Admins" `
